@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+    <title>Registration</title>
+    <link rel="stylesheet" href="Style/registerdetailsstyle.css">
+
+</head>
+<body>
+    
+      <div class="ripple-background"></div>
+      <div class="circle xxlarge shade1"></div>
+      <div class="circle xlarge shade2"></div>
+      <div class="circle large shade3"></div>
+      <div class="circle mediun shade4"></div>
+      <div class="circle small shade5"></div>
+    <div class="row w-100">
+
+        <div class="left col-lg-4">
+            <img src="Pictures/undraw_learning_sketching_nd4f.png" height="400" width="400">
+        </div>
+
+        <div class="right col-lg-8">
+            <div class="card p-3" style="height: 700px;">
+                
+                <h1 class="title text-center">Check your credibility</h1>
+                <div class="card-body w-100">
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+        
+                            <form action="{{ url_for('predict') }}" method="post">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" placeholder="name">
+                                <label for="lastname">Gender:</label>
+                                <input type="text" id="gender" name="gender" placeholder="gender">
+                                <label for="lastname">Marital_Status:</label>
+                                <input type="text" id="marital_status" name="marital_status" placeholder="marital_status">
+                                <label for="lastname">Dependents:</label>
+                                <input type="number" id="dependents" name="dependents" placeholder="dependents">
+                                <label for="lastname">Eduction:</label>
+                                <input type="text" id="education" name="education" placeholder="education">
+                                <label for="lastname">Self_Employed:</label>
+                                <input type="text" id="Self_Employed" name="Self_Employed" placeholder="Self_Employed">
+                                <label for="lastname">ApplicantIncome:</label>
+                                <input type="number" id="ApplicantIncome" name="ApplicantIncome" placeholder="ApplicantIncome">
+                                <label for="lastname">coapp_income:</label>
+                                <input type="number" id="coapp_income" name="coapp_income" placeholder="coapp_income">
+                                <label for="lastname">loan_amount:</label>
+                                <input type="number" id="loan_amount" name="loan_amount" placeholder="loan_amount">
+                                <label for="lastname">term:</label>
+                                <input type="number" id="term" name="term" placeholder="term">
+                                <label for="lastname">credit_history:</label>
+                                <input type="number" id="credit_history" name="credit_history" placeholder="credit_history">
+                                <label for="lastname">property_area:</label>
+                                <input type="text" id="property_area" name="property_area" placeholder="property_area">
+                                <button type="submit">Predict</button>
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        
+
+    </div>
+
+</body>
+</html>

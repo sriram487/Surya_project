@@ -1,0 +1,143 @@
+@font-face {
+    font-family: "Lekton";
+    src: url('assets/Lekton-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lekton";
+    src: url('assets/Lekton-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background-color: black;
+    /* background-image: url('assets/bg.png'); */
+    color: white;
+    font-family: "Lekton", monospace;
+}
+
+.logo {
+    margin: auto;
+    text-align: center;
+}
+
+
+span {
+    /* color: #2de62a; */
+    text-decoration: underline;
+    text-decoration-color: #2de62a
+}
+
+.three-col-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 0px;
+    height: 70vh;
+    align-items: center;
+}
+
+
+.col-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 10px 30px;
+}
+
+/* .col-2,.col-3{
+    padding: 10px 30px;
+} */        
+
+/* .col-3 {
+    background: blue;
+} */
+
+
+.video-div {
+    aspect-ratio: calc(16/9);
+    background: linear-gradient(#000000, #000000) 50% 50%/calc(100% - 6px) calc(100% - 6px) no-repeat,
+        linear-gradient(129deg, #90ee8f 0%, #0372ae 100%);
+    border-radius: 0px;
+    padding: 6px;
+    box-sizing: border-box;
+    /* clip-path: polygon(0 20%,
+            10% 0,
+            100% 0,
+            100% 80%,
+            90% 100%,
+            0% 100%); */        
+}
+
+.video-div>img{
+    width: 100%; 
+    border: 1px red solid;
+    aspect-ratio: calc(640/480);
+}
+
+.data-values {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.value-area {
+    margin-bottom: 30px;
+}
+
+
+.label {
+    margin: 0;
+    padding: 0;
+}
+
+.value {
+    font-size: x-large;
+    color: lightgreen;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.button-area {
+    align-items: center;
+    margin: auto;
+    text-align: center;
+}
+
+button {
+    padding: 15px 60px;
+    font-size: large;
+    font-weight: 500;
+    background: linear-gradient(129deg, #2de62a 0%, #3548f1 100%);
+    border: none;
+    color: white;
+    transition: clip-path 500ms ease-in-out;
+    clip-path: polygon(0 30%,
+            20% 0,
+            100% 0,
+            100% 70%,
+            80% 100%,
+            0% 100%);
+}
+
+button:hover {
+    clip-path: polygon(0 2%,
+            2% 0,
+            100% 0,
+            100% 98%,
+            98% 100%,
+            0% 100%);
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 60px;
+    text-align: center;
+    color: rgb(85, 85, 85);
+}

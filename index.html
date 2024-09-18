@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bellatrix AI</title>
+    <link rel="stylesheet" href="static/style.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script> -->
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>Bell<span>a</span>tr<span>i</span>x Target Detection and Pose Estimation</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="three-col-layout">
+                <!-- <div class="col-1">
+                    <div class="raw-video">
+                        <div class="heading">
+                            <p>Live Video Feed</p>
+                        </div>
+                        <div class="video-div">
+                            <img height="256" id="rgb" src="" alt="RGB">
+                        </div>
+                    </div>
+                    <div class="raw-video">
+                        <div class="heading">
+                            <p>Live Depth Feed</p>
+                        </div>
+                        <div class="video-div">
+                            <img id="depth" src="" alt="DEPTH">
+                        </div>
+                    </div>
+                    <div class="raw-video">
+                        <div class="heading">
+                            <p>Point Cloud </p>
+                        </div>
+                        <div class="video-div">
+                            <img id="pc" src="" alt="DEPTH">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-2">
+                    <div class="raw-video">
+                        <div class="heading">
+                            <p>Live Output Feed</p>
+                        </div>
+                        <div class="video-div">
+                            <img id="vis" src="" alt="VISUALIZE">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="heading">
+                        <p>Output Values</p>
+                    </div>
+                    <div class="data-values">
+                        <div class="value-area">
+                            <p class="label">Distance (m)</p>
+                            <p id='dist' class="value">NaN</p>
+                        </div>
+                        <div class="value-area">
+                            <p class="label">Pitch (d)</p>
+                            <p id='pitch' class="value">NaN</p>
+                        </div>
+                        <div class="value-area">
+                            <p class="label">Roll (d)</p>
+                            <p id='roll' class="value">NaN</p>
+                        </div>
+                        <div class="value-area">
+                            <p class="label">Yaw (d)</p>
+                            <p id='yaw' class="value">NaN</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="button-area">
+                <button onclick="startDisplay()">Start</button>
+            </div>
+
+            <div class="button-area">
+                <button onclick="start_lidar()">Start LIDAR</button>
+            </div>
+
+
+        </div>
+    </main>
+    <footer>
+        <p>Made by Bellatrix Aerospace AIR</p>
+    </footer>
+
+    <script> 
+        
+        let intervalId; 
+        let called = false
+
+        function startDisplay() { 
+            // Clear previous interval if exists 
+            
+            fetch('/start_display') 
+                .then(response => response.json())
+                .then(data => { 
+
+                    if (true) { 
+   
+                        document.getElementById('vis').src = "{{ url_for('video_feed')}}"
+
+                    }
+                    
+                    else {
+                        
+                        clearInterval(intervalId)
+                        // document.getElementById('rgb').src = "static\\bellatrix.png";
+                        // document.getElementById('depth').src = "static\\bellatrix.png";  
+                        document.getElementById('vis').src = "static\\bellatrix.png";   
+                    }
+                    
+                }) 
+                .catch(error => console.error('Error:', error)); 
+
+            // intervalId = setInterval(startDisplay, 1000);     
+        }
+
+        function update_values(){
+
+            fetch('/update_data')
+            .then(response => response.json())
+            .then(data =>  {
+                const pitch = data[0];
+                const roll = data[1];
+                const yaw = data[2];
+                const depth_val = data[3];
+
+                document.getElementById('dist').innerText = depth_val;
+                document.getElementById('pitch').innerText = pitch;
+                document.getElementById('roll').innerText = roll;
+                document.getElementById('yaw').innerText = yaw;
+
+            })
+        } 
+
+        intervalId = setInterval(update_values, 1000);
+        
+        function start_lidar(){
+
+            fetch('./start_lidar')
+                .then(response => response.json())
+                .then(data =>  {
+                
+                 console.log(data)
+
+            })
+        } 
+
+    </script> 
+
+
+</body>
+
+</html>

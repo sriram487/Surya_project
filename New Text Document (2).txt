@@ -1,0 +1,70 @@
+import numpy as np
+
+# Initialize an empty list to store vertices
+vertices = []
+
+# Loop to create vertices based on your existing code
+for y in [ymin, ymax]:
+    for z in [zmin, zmax]:
+        start = np.array([xmin, y, z])
+        end = start + np.array([xmax - xmin, 0, 0])
+        vertices.append(start)
+        vertices.append(end)
+
+for x in [xmin, xmax]:
+    for z in [zmin, zmax]:
+        start = np.array([x, ymin, z])
+        end = start + np.array([0, ymax - ymin, 0])
+        vertices.append(start)
+        vertices.append(end)
+
+for x in [xmin, xmax]:
+    for y in [ymin, ymax]:
+        start = np.array([x, y, zmin])
+        end = start + np.array([0, 0, zmax - zmin])
+        vertices.append(start)
+        vertices.append(end)
+
+# Convert list of vertices to a NumPy array for easier calculations
+vertices = np.array(vertices)
+
+# Calculate the centroid
+centroid = np.mean(vertices, axis=0)
+
+# Output the centroid
+print("Centroid:", centroid)
+
+import numpy as np
+
+def rotation_matrix_to_euler_angles(R):
+    """
+    Convert a rotation matrix to roll, pitch, and yaw angles.
+    
+    Parameters:
+    R (numpy.ndarray): A 3x3 rotation matrix.
+
+    Returns:
+    tuple: (roll, pitch, yaw) in radians and degrees.
+    """
+    assert R.shape == (3, 3), "Input must be a 3x3 rotation matrix."
+
+    # Compute roll (ϕ), pitch (θ), and yaw (ψ)
+    roll = np.arctan2(R[2, 1], R[2, 2])  # atan2(r_{32}, r_{33})
+    pitch = -np.arcsin(R[2, 0])          # -asin(r_{31})
+    yaw = np.arctan2(R[1, 0], R[0, 0])   # atan2(r_{21}, r_{11})
+
+    # Convert to degrees
+    roll_deg = np.degrees(roll)
+    pitch_deg = np.degrees(pitch)
+    yaw_deg = np.degrees(yaw)
+
+    return (roll, pitch, yaw), (roll_deg, pitch_deg, yaw_deg)
+
+# Example usage
+R = np.array([[0, -1, 0],
+              [1, 0, 0],
+              [0, 0, 1]])
+
+euler_radians, euler_degrees = rotation_matrix_to_euler_angles(R)
+print("Roll, Pitch, Yaw (radians):", euler_radians)
+print("Roll, Pitch, Yaw (degrees):", euler_degrees)
